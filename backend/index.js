@@ -75,7 +75,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
 
-mongoose.connect("mongodb://127.0.0.1:27017/ead2");
+// mongoose.connect("mongodb://127.0.0.1:27017/ead2");
 
 //app.use("/product/create", validateMiddleware);
 
@@ -99,9 +99,9 @@ app.get("/product/create/name", (req, res) => {
 
 app.post(
   "/product/create",
-  middleware.myMiddleware,
-  middleware.validateMiddleware,
-
+  // middleware.myMiddleware,
+  // middleware.validateMiddleware,
+  //
   productController.createProduct
 );
 

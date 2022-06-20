@@ -16,7 +16,11 @@ const getAllProducts = async (req, res) => {
 
 
 const create = (req, res) => {
-  res.render("create");
+  return res.json( {
+        title: "Name",
+        price: '200'
+      }
+  )
 };
 
 const productDetail = async (req, res) => {
@@ -28,17 +32,18 @@ const productDetail = async (req, res) => {
 
 const createProduct = (req, res) => {
   console.log("create");
-  console.log(req.body);
-  const img = req.files.pic;
-  img.mv(path.resolve(__dirname, "public/img", img.name), (err) => {
-    Product.create(
-      { ...req.body, image: img.name, userid: req.session.uid },
-      (err, product) => {
-        console.log(product);
-        res.redirect("/products");
-      }
-    );
-  });
+  res.send(req.body)
+  // console.log(req.body);
+  // const img = req.files.pic;
+  // img.mv(path.resolve(__dirname, "public/img", img.name), (err) => {
+  //   Product.create(
+  //     { ...req.body, image: img.name, userid: req.session.uid },
+  //     (err, product) => {
+  //       console.log(product);
+  //       res.redirect("/products");
+  //     }
+  //   );
+  // });
 };
 
 module.exports = { getProducts, create, productDetail, createProduct, getAllProducts };
